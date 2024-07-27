@@ -1,4 +1,3 @@
-numpy==1.24.2
 adagio==0.2.4
 fastapi==0.68.2
 uvicorn==0.15.0
