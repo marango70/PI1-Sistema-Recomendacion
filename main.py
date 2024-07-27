@@ -2,15 +2,15 @@
 # Librerias
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-sns.set
-import warnings
-warnings.filterwarnings('ignore')
-import ast
-import datetime as dt
+#import matplotlib.pyplot as plt
+#import seaborn as sns
+#sns.set
+#import warnings
+#warnings.filterwarnings('ignore')
+#import ast
+#import datetime as dt
 from fastapi import FastAPI, HTTPException
-from typing import List
+#from typing import List
 from pydantic import BaseModel
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.preprocessing import StandardScaler
