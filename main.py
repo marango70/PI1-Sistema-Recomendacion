@@ -1,19 +1,13 @@
 
 # Librerias
-#import numpy as np
+
 import pandas as pd
-#import matplotlib.pyplot as plt
-#import seaborn as sns
-#sns.set
-#import warnings
-#warnings.filterwarnings('ignore')
-#import ast
+
 #import datetime as dt
 from fastapi import FastAPI, HTTPException
-#from typing import List
 from pydantic import BaseModel
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.preprocessing import StandardScaler
+#from sklearn.preprocessing import StandardScaler
 from sklearn.metrics.pairwise import cosine_similarity
 
 #Instancio la App de FastAPI
@@ -349,7 +343,7 @@ for i in columnas_eliminar:
 #Filtro la data para que tome solo las peliculas lanzadas despues del 2000, bajando el peso de la misma en un 50% aprox
 data_filtrada = data[data['release_year'] > 2000] 
 
-#Preprocesamiento de los datos: 
+
 
 
 if __name__ == "__main__":
