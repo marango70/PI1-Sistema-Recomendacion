@@ -1,6 +1,6 @@
 
 # Librerias
-import numpy as np
+#import numpy as np
 import pandas as pd
 #import matplotlib.pyplot as plt
 #import seaborn as sns
@@ -379,7 +379,18 @@ scaler = StandardScaler()  #Instancio
 data_filtrada[['popularity','release_year']] = scaler.fit_transform(data_filtrada[['popularity', 'release_year']]) #escalo
 
 #Creo una matrix total uniendo las catacteristicas categóricas más las numéricas.
-matrix_total = np.hstack((tfidf_matrix.toarray(), data_filtrada[['popularity', 'release_year']].values))
+#matrix_total = np.hstack((tfidf_matrix.toarray(), data_filtrada[['popularity', 'release_year']].values))
+
+# Convierto tfidf_matrix a array y obtengo los valores de las columnas numéricas
+tfidf_array = tfidf_matrix.toarray()
+numeric_data = data_filtrada[['popularity', 'release_year']].values
+
+# Creo una matriz total uniendo las características categóricas más las numéricas sin usar numpy
+matrix_total = [list(tfidf_array[i]) + list(numeric_data[i]) for i in range(len(tfidf_array))]
+
+# Convierto la lista de listas a un DataFrame para facilitar su uso posterior
+matrix_total = pd.DataFrame(matrix_total)
+
 
 # Consulta Votos por Título:
 
@@ -418,6 +429,8 @@ async def recomendacion(titulo: str):
 
         recomendadas = data_filtrada['title'].iloc[similar_movies_indices].tolist()
 
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error interno: {str(e)}")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error interno: {str(e)}")
 
